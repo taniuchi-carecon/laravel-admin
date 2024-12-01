@@ -30,5 +30,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
 COPY ./docker/app/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+COPY ./src /app
 
-WORKDIR /app
+WORKDIR /app/laravel-admin/
