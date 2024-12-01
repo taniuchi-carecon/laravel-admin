@@ -9,6 +9,11 @@ services:
       - 8080:8080
     volumes:
       - ./src:/app
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
 
   web:
     build:
@@ -20,6 +25,11 @@ services:
       - app
     volumes:
       - ./src:/app
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
 
   db:
     image: mysql:8.0
@@ -38,3 +48,4 @@ services:
 
 volumes:
   mysql-data:
+  php-fpm-socket:
